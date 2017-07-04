@@ -15,13 +15,13 @@ RUN sudo apt-get update && \
 RUN sudo apt-get install -y python-dev python-virtualenv libssl-dev libffi-dev libjpeg8-dev libxml2-dev libxslt1-dev libsasl2-dev libssl-dev libldap2-dev libffi-dev libsqlite3-dev libmysqlclient-dev python-mysqldb
 
 # Download latest version of the code 
-RUN git clone https://github.com/ging/keystone && \
+RUN git clone https://github.com/billhu422/keystone && \
     cd keystone && \
-    git checkout tags/keyrock-5.4.0
+    git checkout hybrid
     
-RUN git clone https://github.com/ging/horizon && \
+RUN git clone https://github.com/billhu422/horizon && \
     cd horizon && \
-    git checkout tags/keyrock-5.4.0
+    git checkout hybrid
 
 # Configuring settings files
 RUN cp keystone/etc/keystone.conf.sample keystone/etc/keystone.conf && \
