@@ -57,5 +57,7 @@ VOLUME /horizon/
 EXPOSE 5000
 # - Horizon (HTTP)
 EXPOSE 8000
+# - keystone adim url
+EXPOSE 35357
 
 CMD sudo /keystone/tools/with_venv.sh /keystone/bin/keystone-all -v & sudo /horizon/tools/with_venv.sh python /horizon/manage.py runserver 0.0.0.0:8000

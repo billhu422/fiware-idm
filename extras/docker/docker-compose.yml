@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+   db:
+     image: mysql:5.7
+     volumes:
+       - db_data:/var/lib/mysql
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: qaz123
+       MYSQL_DATABASE: keystone
+       MYSQL_USER: keystone
+       MYSQL_PASSWORD: openstacktest
+
+   idm:
+     depends_on:
+       - db
+     image: idm:test
+     ports:
+       - "5001:5000"
+       - "8001:8000"
+       - "35358:35357"
+     restart: always
+     environment:
+       IDM_DB_HOST: db:3306
+       IDM_DB_USER: keystone
+       IDM_DB_PASSWORD: openstacktest
+volumes:
+    db_data:
